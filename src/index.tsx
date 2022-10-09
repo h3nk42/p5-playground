@@ -1,6 +1,6 @@
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import "./react/index.css";
+import App from "./react/App";
+import reportWebVitals from "./react/reportWebVitals";
 import React from "react";
 import { createRoot } from "react-dom/client";
 

@@ -1,13 +1,18 @@
 import { Config } from "./Config";
+import { p } from "./Canvas";
 
 class Program {
-  frameCounter: number = 0;
+  frameCounter: number = 1;
 
   frameSubscribers: FrameSubscriber[] = [];
   onMouseClickedCallbacks: (() => void)[] = [];
+  onKeyPressedCallbacks: ((keyCode: number) => void)[] = [];
 
   constructor() {
     Config.MOUSE_CALLBACKS.forEach((cb) => this.addOnMouseClickedCallback(cb));
+    Config.KEY_PRESS_CALLBACKS.forEach((cb) =>
+      this.addOnKeyPressedCallback(cb)
+    );
   }
 
   incrementFrameCounter() {
@@ -25,12 +30,20 @@ class Program {
     this.onMouseClickedCallbacks.push(callback);
   }
 
+  addOnKeyPressedCallback(callback: (keyCode: number) => void) {
+    this.onKeyPressedCallbacks.push(callback);
+  }
+
   addFrameSubscriber(sub: FrameSubscriber) {
     this.frameSubscribers.push(sub);
   }
 
   executeOnMouseClickedCallbacks() {
     this.onMouseClickedCallbacks.forEach((cb) => cb());
+  }
+
+  executeKeyPressCallbacks() {
+    this.onKeyPressedCallbacks.forEach((cb) => cb(p.keyCode));
   }
 }
 

@@ -1,7 +1,8 @@
 export const COLOR = {
-  gold: "#ff70a6",
-  greenLight: "#5465ff",
-  green: "#00a8e8",
+  box: "#B5BD89",
+  box_special: "#F7B267",
+  background: "#729EA1",
+  food: "#F25C54",
 } as const;
 
 export type ColorNames = keyof typeof COLOR;

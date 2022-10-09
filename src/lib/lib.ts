@@ -39,4 +39,8 @@ export namespace Lib {
       Math.floor(Math.random() * max)
     );
   };
+
+  export const assertEqualCoords = (a: Coords, b: Coords) => {
+    return a.x === b.x && a.y === b.y;
+  };
 }
